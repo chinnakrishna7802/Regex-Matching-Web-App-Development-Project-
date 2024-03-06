@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex App</title>
+    <style>
+        body {
+            font-family: cursive;
+            margin: 0;
+            padding: 0;
+            background-color: blueviolet;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 70px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 0, 0.655);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li h3 {
+            display: inline;
+            margin: 20px;
+            color: white;
+        }
+
+        nav ul li a {
+            margin: 0 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            /* justify-content: center; */
+            align-items: center;
+            margin: auto;
+            width: 100px;
+        }
+
+        button:hover {
+            background-color: #14A44D;
+            box-shadow: 0.25rem 0.25rem black;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                max-width: 90%;
+                margin: 20px auto;
+                padding: 10px;
+            }
+
+            input[type="text"],
+            textarea {
+                width: calc(100% - 16px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <h3>Pattern Matching Web App</h3>
+            </li>
+            <li><a href="/">Regex app</a></li>
+            <li><a href="/email">Email validation </a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <form action="/regex_result" method="post">
+
+            <label>Test string:</label>
+            <textarea id="text" name="text" rows="4" cols="50" required>{{ text }}</textarea>
+            <br>
+            <label>Regex Pattern:</label>
+            <input type="text" id="pattern" name="pattern" value="{{ pattern }}" required>
+            <br>
+            <button type="submit">Search</button>
+        </form>
+        <h3>Matches:</h3>
+        <p >
+            {% for match in matches %}
+                {{ match }}
+            {% endfor %}
+
+        </p>
+    </div>
+</body>
+
+</html>
